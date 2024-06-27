@@ -1,0 +1,22 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "articleName": "The Perfect Spaghetti Carbonara",
+            "category": "Pasta",
+            "headline": "Learn how to make the classic Italian Spaghetti Carbonara with a creamy egg sauce, crispy pancetta, and a touch of Parmesan."
+          },
+          {
+            "id": 2,
+            "articleName": "Vegan Tacos with Spicy Lentil Filling",
+            "category": "Vegan",
+            "headline": "These vegan tacos are packed with flavor and protein, featuring a spicy lentil filling, fresh avocado, and a zesty lime crema."
+          },
+          {
+            "id": 3,
+            "articleName": "Chocolate Lava Cake",
+            "category": "Dessert",
+            "headline": "Indulge in this rich and gooey chocolate lava cake, perfect for a special occasion or a luxurious treat."
+          }
+    ]
+}
