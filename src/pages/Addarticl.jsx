@@ -1,9 +1,14 @@
-import React from 'react'
+import AddarticleForm from "../components/AddarticleForm";
+
 
 const Addarticl = () => {
   return (
-    <div>Addarticl</div>
-  )
-}
+    <section>
 
-export default Addarticl
+      <AddarticleForm />
+
+    </section>
+  );
+};
+
+export default Addarticl;

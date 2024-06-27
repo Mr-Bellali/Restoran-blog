@@ -1,16 +1,21 @@
-import React from 'react'
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 const Navbar = () => {
   return (
-    <div className='w-full h-[80px] bg-[#17181D] flex flex-row'>
-        <div className='w-2/3 h-full bg-green-300'>
+    <div className="w-full h-[70px] bg-[#17181D] flex flex-row fixed top-0 left-0 z-20">
+      <div className="w-[20%]">
 
-        </div>
-        <div className='w-1/3 h-full bg-red-300'>
-
-        </div>
+      </div>
+      <div className="w-[60%] h-full flex items-center justify-center">
+        <h1 className="text-[30px] font-extrabold text-white">
+          Restoran blog
+        </h1>
+      </div>
+      <div className="w-[20%] h-full flex justify-end items-center">
+        <SearchRoundedIcon sx={{ color: 'white', fontSize:'45px', marginRight: '15px'}}/>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
