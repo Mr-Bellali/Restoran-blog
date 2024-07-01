@@ -67,6 +67,73 @@
       "ingredients": "test",
       "cook_method": "test",
       "image": {}
+    },
+    {
+      "id": "aee4",
+      "title": "tajin",
+      "category_id": "2",
+      "description": "tajin bdjaj",
+      "ingredients": "djaj\ntajin",
+      "cook_method": "teyboo",
+      "image": ""
+    },
+    {
+      "id": "f0e4",
+      "title": "tajin",
+      "category_id": "2",
+      "description": "tajin bdjaj",
+      "ingredients": [
+        "djaj",
+        "tajin"
+      ],
+      "cook_method": "teyboo",
+      "image": ""
+    },
+    {
+      "id": "5536",
+      "title": "tajin",
+      "category_id": "2",
+      "description": "tajin bdjaj",
+      "ingredients": [
+        "djaj",
+        "tajin"
+      ],
+      "cook_method": "teyboo",
+      "image": ""
+    },
+    {
+      "id": "96e5",
+      "title": "Tajine",
+      "category_id": "2",
+      "description": "tajine bdjaj",
+      "ingredients": [
+        "djaj",
+        "lmohim"
+      ],
+      "cook_method": "mana3ref",
+      "image": ""
+    },
+    {
+      "id": "96e5",
+      "title": "ldfjnla",
+      "category_id": "2",
+      "description": "kjfk",
+      "ingredients": [
+        "ksnk"
+      ],
+      "cook_method": "nsdvkvn",
+      "image": ""
+    },
+    {
+      "id": "122",
+      "title": "rrrrrrrrrrr",
+      "category_id": "2",
+      "description": "rrrrrrrrrrrr",
+      "ingredients": [
+        "rrrrrrrrrrrrrrrrr"
+      ],
+      "cook_method": "rrrrrrrrrrrrrrr",
+      "image": "https://res.cloudinary.com/dmoosgavw/image/upload/v1719850685/pfszigncwlxcqpvomge0.webp"
     }
   ]
 }

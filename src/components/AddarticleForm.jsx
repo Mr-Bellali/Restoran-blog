@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
 import { getCategories } from "../services/categoryService";
 import { createArticle } from "../services/articleService";
-import { CloudinaryContext, Image, Transformation } from "cloudinary-react"; // Import Cloudinary components
 import axios from "axios";
 
-const cloudinaryUrl = "https://api.cloudinary.com/v1_1/do8izhje4/image/upload";
+const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dmoosgavw/image/upload";
+const cloudinaryPreset = "ndvxj3sl"; // Replace with your actual upload preset name
 
 const AddarticleForm = () => {
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [imageUrl, setImageUrl] = useState(""); // State to store the image URL
+  const [loading, setLoading] = useState(true); // State to manage loading
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -19,6 +20,7 @@ const AddarticleForm = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching categories: ", error);
+        setLoading(false);
       }
     };
 
@@ -27,17 +29,16 @@ const AddarticleForm = () => {
 
   const handleFileSelect = async (e) => {
     const file = e.target.files[0];
-    // Upload image to Cloudinary
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "your_upload_preset"); // Replace with your upload preset
+      formData.append("upload_preset", cloudinaryPreset); // Use the preset name
 
       const response = await axios.post(cloudinaryUrl, formData);
-      const imageUrl = response.data.secure_url;
+      const uploadedImageUrl = response.data.secure_url;
+      setImageUrl(uploadedImageUrl); // Set the image URL in state
 
-      // Set the image URL in state or do something with it
-      console.log("Uploaded Image URL:", imageUrl);
+      console.log("Uploaded Image URL:", uploadedImageUrl);
     } catch (error) {
       console.error("Error uploading image to Cloudinary: ", error);
     }
@@ -48,12 +49,13 @@ const AddarticleForm = () => {
 
     const formData = new FormData(e.target);
     const article = {
+      id: "",
       title: formData.get("articleName"),
       category_id: formData.get("category"),
       description: formData.get("description"),
-      ingredients: formData.get("ingredient"),
+      ingredients: formData.get("ingredient").split("\n"), // Convert to array
       cook_method: formData.get("method"),
-      image: formData.get("image"), // Replace with imageUrl from Cloudinary
+      image: imageUrl, // Use the image URL from Cloudinary
     };
 
     try {
