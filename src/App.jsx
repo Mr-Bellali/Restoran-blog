@@ -4,6 +4,7 @@ import Subnavbar from './components/Subnavbar';
 import About from './pages/About';
 import Addarticl from './pages/Addarticl';
 import Home from './pages/Home';
+import Blogger from './pages/Blogger';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/addarticle' element={<Addarticl />} />
             <Route path='/about' element={<About />} />
+            <Route path='/blogger/:id' element={<Blogger />} />
           </Routes>
         </div>
       </div>

@@ -1,22 +1,72 @@
 {
-    "articles": [
-        {
-            "id": 1,
-            "articleName": "The Perfect Spaghetti Carbonara",
-            "category": "Pasta",
-            "headline": "Learn how to make the classic Italian Spaghetti Carbonara with a creamy egg sauce, crispy pancetta, and a touch of Parmesan."
-          },
-          {
-            "id": 2,
-            "articleName": "Vegan Tacos with Spicy Lentil Filling",
-            "category": "Vegan",
-            "headline": "These vegan tacos are packed with flavor and protein, featuring a spicy lentil filling, fresh avocado, and a zesty lime crema."
-          },
-          {
-            "id": 3,
-            "articleName": "Chocolate Lava Cake",
-            "category": "Dessert",
-            "headline": "Indulge in this rich and gooey chocolate lava cake, perfect for a special occasion or a luxurious treat."
-          }
-    ]
+  "categories": [
+    {
+      "id": "1",
+      "name": "Dessert",
+      "color": "#26A69A"
+    },
+    {
+      "id": "2",
+      "name": "Main Dish",
+      "color": "#5C6BC0"
+    },
+    {
+      "id": "3",
+      "name": "Extra",
+      "color": "#6D4C41"
+    }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "Chocolate Lava Cake",
+      "category_id": 1,
+      "description": "Indulge in this rich and gooey chocolate lava cake, perfect for a special occasion or a luxurious treat.",
+      "ingredients": [
+        "chocolate",
+        "butter",
+        "sugar",
+        "eggs",
+        "flour"
+      ],
+      "cook_method": "Bake at 450°F for 12-14 minutes"
+    },
+    {
+      "id": "2",
+      "title": "The Perfect Spaghetti Carbonara",
+      "category_id": 2,
+      "description": "Learn how to make the classic Italian Spaghetti Carbonara with a creamy egg sauce, crispy pancetta, and a touch of Parmesan.",
+      "ingredients": [
+        "spaghetti",
+        "pancetta",
+        "eggs",
+        "Parmesan cheese",
+        "black pepper"
+      ],
+      "cook_method": "Cook pasta, mix with egg sauce and pancetta"
+    },
+    {
+      "id": "3",
+      "title": "Vegan Tacos with Spicy Lentil Filling",
+      "category_id": 3,
+      "description": "These vegan tacos are packed with flavor and protein, featuring a spicy lentil filling, fresh avocado, and a zesty lime crema.",
+      "ingredients": [
+        "lentils",
+        "avocado",
+        "lime",
+        "taco shells",
+        "spices"
+      ],
+      "cook_method": "Cook lentils with spices, assemble tacos with avocado and lime"
+    },
+    {
+      "id": "25ff",
+      "title": "test",
+      "category_id": "1",
+      "description": "test",
+      "ingredients": "test",
+      "cook_method": "test",
+      "image": {}
+    }
+  ]
 }
