@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
 import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
+import { v4 as uuidv4 } from 'uuid';
 import { getCategories } from "../services/categoryService";
 import { createArticle } from "../services/articleService";
 import axios from "axios";
+import { showError, showSuccess } from "../utils/notifications";
+import { ToastContainer } from "react-toastify";
 
 const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dmoosgavw/image/upload";
-const cloudinaryPreset = "ndvxj3sl"; // Replace with your actual upload preset name
+const cloudinaryPreset = "ndvxj3sl"; 
 
 const AddarticleForm = () => {
   const [categories, setCategories] = useState([]);
-  const [imageUrl, setImageUrl] = useState(""); // State to store the image URL
-  const [loading, setLoading] = useState(true); // State to manage loading
+  const [imageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -29,14 +33,15 @@ const AddarticleForm = () => {
 
   const handleFileSelect = async (e) => {
     const file = e.target.files[0];
+    setImagePreview(URL.createObjectURL(file)); 
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", cloudinaryPreset); // Use the preset name
+      formData.append("upload_preset", cloudinaryPreset);
 
       const response = await axios.post(cloudinaryUrl, formData);
       const uploadedImageUrl = response.data.secure_url;
-      setImageUrl(uploadedImageUrl); // Set the image URL in state
+      setImageUrl(uploadedImageUrl);
 
       console.log("Uploaded Image URL:", uploadedImageUrl);
     } catch (error) {
@@ -49,23 +54,25 @@ const AddarticleForm = () => {
 
     const formData = new FormData(e.target);
     const article = {
-      id: "",
+      id: uuidv4(),
       title: formData.get("articleName"),
       category_id: formData.get("category"),
       description: formData.get("description"),
-      ingredients: formData.get("ingredient").split("\n"), // Convert to array
+      ingredients: formData.get("ingredient").split("\n"),
       cook_method: formData.get("method"),
-      image: imageUrl, // Use the image URL from Cloudinary
+      image: imageUrl,
     };
 
     try {
       const createdArticle = await createArticle(article);
       console.log("Created Article:", createdArticle);
-      // Reset form or show success message
-      alert("Article created successfully!");
+      showSuccess("Article created successfully!");
+      e.target.reset();
+      setImageUrl("");
+      setImagePreview(null); 
     } catch (error) {
       console.error("Error creating article: ", error);
-      alert("Failed to create article. Please try again.");
+      showError("Failed to create article. Please try again.");
     }
   };
 
@@ -143,7 +150,6 @@ const AddarticleForm = () => {
           />
         </div>
         
-        {/* Hidden file input */}
         <input
           type="file"
           id="image"
@@ -166,6 +172,13 @@ const AddarticleForm = () => {
             </button>
           </label>
         </div>
+        
+        {imagePreview && (
+          <div className="w-full h-fit flex flex-col mb-4 items-center">
+            <img src={imagePreview} alt="Image Preview" className="w-[200px] h-[200px] object-cover" />
+          </div>
+        )}
+
         <div className="w-full h-fit flex flex-col mb-4 justify-center items-center">
           <button
             type="submit"
@@ -174,6 +187,7 @@ const AddarticleForm = () => {
             Add Article
           </button>
         </div>
+        <ToastContainer />
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Blogpost from "../components/Blogpost";
 import Category from "../components/Category";
 import { getArticles } from '../services/articleService';
@@ -8,13 +8,12 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState(null); // State to store selected category
 
   useEffect(() => {
     const fetchArticlesAndCategories = async () => {
       try {
         const [articlesData, categoriesData] = await Promise.all([getArticles(), getCategories()]);
-        console.log("Fetched Articles Data: ", articlesData);
-        console.log("Fetched Categories Data: ", categoriesData);
         setArticles(articlesData);
         setCategories(categoriesData);
         setLoading(false);
@@ -28,31 +27,47 @@ const Home = () => {
 
   const getCategoryName = (categoryId) => {
     const category = categories.find(cat => String(cat.id) === String(categoryId));
-    console.log("Category ID: ", categoryId, "Category: ", category);
     return category ? category.name : "Unknown";
   };
 
   const getCategoryColor = (categoryId) => {
     const category = categories.find(cat => String(cat.id) === String(categoryId));
-    console.log("Category ID: ", categoryId, "Category: ", category);
     return category ? category.color : "#E64A19";
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    if (selectedCategory === categoryId) {
+      setSelectedCategory(null); // Deselect category if already selected
+    } else {
+      setSelectedCategory(categoryId); // Set selected category
+    }
   };
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  // Filter articles based on selected category
+  const filteredArticles = selectedCategory
+    ? articles.filter(article => String(article.category_id) === String(selectedCategory))
+    : articles;
+
   return (
     <section className="w-full h-full flex flex-col items-center">
       <div className="w-full h-[55px] flex flex-row pl-3 justify-start items-center overflow-x-auto no-scrollbar">
         <div className="flex space-x-2 no-scrollbar">
           {categories.map(category => (
-            <Category key={category.id} category={category} />
+            <Category
+              key={category.id}
+              category={category}
+              onClick={() => handleCategoryClick(category.id)}
+              isSelected={category.id === selectedCategory}
+            />
           ))}
         </div>
       </div>
       <div className="w-full h-full flex flex-col items-center justify-start py-3">
-        {articles.map(article => (
+        {filteredArticles.map(article => (
           <Blogpost
             key={article.id}
             article={article}

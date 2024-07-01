@@ -15,10 +15,6 @@ const createArticle = async (article) => {
   return response.data;
 };
 
-const updateArticle = async (id, article) => {
-  const response = await api.put(`/articles/${id}`, article);
-  return response.data;
-};
 
 const deleteArticle = async (id) => {
   await api.delete(`/articles/${id}`);
@@ -26,4 +22,4 @@ const deleteArticle = async (id) => {
 
 
 
-export { getArticles, getArticleById, createArticle, updateArticle, deleteArticle };
+export { getArticles, getArticleById, createArticle, deleteArticle };

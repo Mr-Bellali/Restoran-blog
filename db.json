@@ -125,15 +125,59 @@
       "image": ""
     },
     {
-      "id": "122",
-      "title": "rrrrrrrrrrr",
-      "category_id": "2",
-      "description": "rrrrrrrrrrrr",
+      "id": "",
+      "title": "testing notif",
+      "category_id": "1",
+      "description": "testing notif",
       "ingredients": [
-        "rrrrrrrrrrrrrrrrr"
+        "notif"
       ],
-      "cook_method": "rrrrrrrrrrrrrrr",
-      "image": "https://res.cloudinary.com/dmoosgavw/image/upload/v1719850685/pfszigncwlxcqpvomge0.webp"
+      "cook_method": "notif",
+      "image": "https://res.cloudinary.com/dmoosgavw/image/upload/v1719866039/xyumbqrt1qiaqdxaizmg.jpg"
+    },
+    {
+      "id": "",
+      "title": "sd",
+      "category_id": "1",
+      "description": "fdg",
+      "ingredients": [
+        "dfs"
+      ],
+      "cook_method": "dsgsd",
+      "image": ""
+    },
+    {
+      "id": "",
+      "title": "sd",
+      "category_id": "1",
+      "description": "fdg",
+      "ingredients": [
+        "dfs"
+      ],
+      "cook_method": "dsgsd",
+      "image": "https://res.cloudinary.com/dmoosgavw/image/upload/v1719866433/bevxga6dpvr3ueey9uv4.jpg"
+    },
+    {
+      "id": "",
+      "title": "saodh",
+      "category_id": "1",
+      "description": "qwdf",
+      "ingredients": [
+        "wdq"
+      ],
+      "cook_method": "qwd",
+      "image": ""
+    },
+    {
+      "id": "2bf6676f-bf1f-4dd1-959d-abc1847259d0",
+      "title": "uuid testing",
+      "category_id": "2",
+      "description": "qwrq",
+      "ingredients": [
+        "gsdg"
+      ],
+      "cook_method": "gsdsdf",
+      "image": ""
     }
   ]
 }
